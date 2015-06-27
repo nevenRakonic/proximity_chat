@@ -1,6 +1,10 @@
 defmodule ProximityChat.Router do
   use ProximityChat.Web, :router
 
+  socket "/ws", HelloPhoenix do
+    channel "rooms:*", RoomChannel
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
