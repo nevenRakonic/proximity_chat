@@ -13,7 +13,6 @@ let $messagesContainer = $("#messages")
 let socket = new Socket("/ws")
 socket.connect()
 let chan = socket.chan("rooms:lobby", {})
-console.log(chan)
 
 $chatInput.on("keypress", event => {
   if(event.keyCode === 13){
@@ -27,7 +26,7 @@ chan.on("new_msg", payload => {
 })
 
 chan.on("exit_msg", payload => {
-  console.log(payload.body)
+  $messagesContainer.append(`<br/>[${Date()}] ${payload.body}`)
 })
 
 chan.join().receive("ok", chan => {
