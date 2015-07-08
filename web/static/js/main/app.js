@@ -32,3 +32,4 @@ chan.on("exit_msg", payload => {
 chan.join().receive("ok", chan => {
   console.log("Welcome to Phoenix Chat!")
 })
+

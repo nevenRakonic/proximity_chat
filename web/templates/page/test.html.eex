@@ -1,0 +1,3 @@
+<h1>This is a test page!</h1>
+<script src="<%= static_path(@conn, "/js/test_socket.js") %>"></script>
+<script>require("web/static/js/test_room/test_socket")</script>

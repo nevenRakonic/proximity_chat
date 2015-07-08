@@ -9,6 +9,8 @@
 
     <title>Hello Phoenix!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <script src="<%= static_path(@conn, "/js/vendor.js") %>"></script>
+
   </head>
 
   <body>
@@ -28,6 +30,7 @@
     </div> <!-- /container -->
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script>require("web/static/js/app")</script>
+    <script>require("web/static/js/main/app")</script>
+
   </body>
 </html>

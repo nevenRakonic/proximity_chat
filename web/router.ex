@@ -3,6 +3,7 @@ defmodule ProximityChat.Router do
 
   socket "/ws", HelloPhoenix do
     channel "rooms:*", RoomChannel
+    channel "private:test", TestChannel
   end
 
   pipeline :browser do
@@ -20,6 +21,7 @@ defmodule ProximityChat.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/test", PageController, :test
   end
 
   # Other scopes may use custom stacks.
