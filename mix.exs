@@ -35,6 +35,7 @@ defmodule ProximityChat.Mixfile do
      {:phoenix_html, "~> 1.0"},
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:exredis, ">= 0.1.1" }]
+     {:exredis, ">= 0.1.1" },
+     {:uuid, "~> 1.0" }]
   end
 end
