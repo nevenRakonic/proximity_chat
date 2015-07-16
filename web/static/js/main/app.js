@@ -16,20 +16,31 @@ let chan = socket.chan("rooms:lobby", {})
 
 $chatInput.on("keypress", event => {
   if(event.keyCode === 13){
+    console.log(chan)
     chan.push("new_msg", {body: $chatInput.val()})
     $chatInput.val("")
   }
 })
 
-chan.on("new_msg", payload => {
-  $messagesContainer.append(`<br/>[${Date()}] ${payload.body}`)
+chan.on("dispatch", payload => {
+  chan.leave()
+  chan = socket.chan("rooms:" + payload.user_id, {})
+
+  console.log(payload.user_id)
+  chan.join().receive("ok", sock_chan => {
+    console.log("inside new room")
+  })
+
+  chan.on("new_msg", payload => {
+    $messagesContainer.append(`<br/>[${Date()}] ${payload.body}`)
+  })
 })
+
 
 chan.on("exit_msg", payload => {
   $messagesContainer.append(`<br/>[${Date()}] ${payload.body}`)
 })
 
-chan.join().receive("ok", chan => {
-  console.log("Welcome to Phoenix Chat!")
+chan.join().receive("ok", sock_chan => {
+  chan.push("dispatch", {})
 })
-
