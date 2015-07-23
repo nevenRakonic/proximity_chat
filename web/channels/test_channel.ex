@@ -1,4 +1,4 @@
-defmodule HelloPhoenix.TestChannel do
+defmodule ProximityChat.TestChannel do
   use Phoenix.Channel
 
   def join("private:test", auth_msg, socket) do

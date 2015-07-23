@@ -1,4 +1,4 @@
-defmodule HelloPhoenix.RoomChannel do
+defmodule ProximityChat.RoomChannel do
   use Phoenix.Channel
   alias ProximityChat.User, as: User
 

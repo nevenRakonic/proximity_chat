@@ -1,7 +1,7 @@
 defmodule ProximityChat.Router do
   use ProximityChat.Web, :router
 
-  socket "/ws", HelloPhoenix do
+  socket "/ws", ProximityChat do
     channel "rooms:*", RoomChannel
     channel "private:test", TestChannel
   end
