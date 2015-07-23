@@ -1,18 +1,16 @@
 defmodule ProximityChat.RoomChannel do
   use Phoenix.Channel
-  alias ProximityChat.User, as: User
+  alias ProximityChat.User
 
   def join("rooms:lobby", auth_msg, socket) do
     {:ok, socket}
   end
 
   def join("rooms:" <> _private_room_id, _auth_msg, socket) do
-    IO.puts "joined new channel"
     {:ok, socket}
   end
 
   def handle_in("new_msg", %{"body" => body}, socket) do
-    IO.puts "new message triggered"
     broadcast! socket, "new_msg", %{body: body}
     {:noreply, socket}
   end

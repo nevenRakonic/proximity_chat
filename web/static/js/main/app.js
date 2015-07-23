@@ -26,9 +26,8 @@ chan.on("dispatch", payload => {
   chan.leave()
   chan = socket.chan("rooms:" + payload.user_id, {})
 
-  console.log(payload.user_id)
   chan.join().receive("ok", sock_chan => {
-    console.log("inside new room")
+    $messagesContainer.append(`<br/>You have entered the room: ${payload.user_id}`)
   })
 
   chan.on("new_msg", payload => {
